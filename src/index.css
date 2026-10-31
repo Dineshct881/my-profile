@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Sora:wght@500;600;700&display=swap');
+
+:root {
+  --bg: #07070d;
+  --bg2: #0e0b1b;
+  --text: #ecebf5;
+  --muted: #a29fba;
+  --pink: #ff4fa3;
+  --violet: #8b5cf6;
+  --blue: #3b82f6;
+  --grad: linear-gradient(110deg, var(--pink), var(--violet) 55%, var(--blue));
+  --glass: rgba(255, 255, 255, 0.05);
+  --line: rgba(255, 255, 255, 0.12);
+}
+
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 400 1rem/1.7 Inter, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+h1, h2, h3, .logo, .hello { font-family: Sora, Inter, sans-serif; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
+
+.skip { position: absolute; left: -999px; top: 8px; background: #fff; color: #000; padding: 8px 14px; border-radius: 8px; z-index: 100; }
+.skip:focus { left: 8px; }
+
+.wrap { width: min(1120px, 92%); margin-inline: auto; }
+.narrow { width: min(760px, 92%); }
+.muted { color: var(--muted); }
+.grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* buttons */
+.btn { display: inline-block; padding: 13px 26px; border-radius: 999px; font: 600 0.95rem Inter, sans-serif; text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: transform 0.25s, box-shadow 0.25s, background 0.25s; color: var(--text); }
+.btn.primary { background: var(--grad); box-shadow: 0 8px 30px -8px var(--pink); }
+.btn.primary:hover { transform: translateY(-3px); box-shadow: 0 14px 34px -8px var(--violet); }
+.btn.ghost { background: var(--glass); border-color: var(--line); }
+.btn.ghost:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-3px); }
+.btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.btns.small .btn { padding: 10px 20px; font-size: 0.85rem; }
+
+/* scroll reveal */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
+}
